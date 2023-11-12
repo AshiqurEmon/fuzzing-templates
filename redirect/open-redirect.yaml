@@ -161,6 +161,9 @@ http:
           - "https?://" # Replace HTTP URLs with alternatives
         fuzz:
           - "https://{{redirect}}"
+          - "//{{redirect}}"
+          - "////{{redirect}}"
+          - "{{redirect}}"
 
     stop-at-first-match: true
     matchers-condition: and
@@ -168,7 +171,8 @@ http:
       - type: regex
         part: header
         regex:
-          - '(?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)?(?:[a-zA-Z0-9\-_\.@]*)evil\.com\/?(\/|[^.].*)?$' # https://regex101.com/r/ZDYhFh/1
+          - 'Location: https://evil.com'
+          - 'Location: evil.com'
 
       - type: status
         status:

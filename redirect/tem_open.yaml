@@ -159,10 +159,7 @@ http:
       - part: query
         mode: single
         values:
-          - "https?://" # Replace HTTP URLs with alternatives
-          - "https%3A%2F%2F"
-          - "http?://" # Replace HTTP URLs with alternatives
-          - "http%3A%2F%2F"
+          - "http"
         fuzz:
           - "https://{{redirect}}"
           - "//{{redirect}}"

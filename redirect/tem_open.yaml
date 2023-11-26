@@ -133,6 +133,7 @@ http:
           - domain_url
           - entry
           - exit
+          - cb_url
           - forward_url
           - go_to
           - goto_url
@@ -159,6 +160,9 @@ http:
         mode: single
         values:
           - "https?://" # Replace HTTP URLs with alternatives
+          - "https%3A%2F%2F"
+          - "http?://" # Replace HTTP URLs with alternatives
+          - "http%3A%2F%2F"
         fuzz:
           - "https://{{redirect}}"
           - "//{{redirect}}"

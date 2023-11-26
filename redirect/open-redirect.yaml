@@ -2,7 +2,7 @@ id: open-redirect
 
 info:
   name: Open Redirect Detection
-  author: princechaddha
+  author: ashiquremon
   severity: medium
   tags: redirect,dast
 
@@ -133,6 +133,7 @@ http:
           - domain_url
           - entry
           - exit
+          - cb_url
           - forward_url
           - go_to
           - goto_url
@@ -153,17 +154,41 @@ http:
           - to_url
           - validate_url
         fuzz:
+          - "//{{redirect}}"
+          - "////{{redirect}}"
+          - "//%2F/{{redirect}}"
+          - "/%0D/{{redirect}}"
+          - "/%2F/{{redirect}}"
+          - "/%5C{{redirect}}"
+          - "/%00/{{redirect}}"
+          - "/%09/{{redirect}}"
           - "https://{{redirect}}"
+          - "/%0a/{{redirect}}"
+          - "{{BaseURL}}.{{redirect}}"
+          - "{{BaseURL}}@{{redirect}}"
+          - "{{redirect}}"
+          - "https:{{redirect}}"
 
       - part: query
         mode: single
         values:
-          - "https?://" # Replace HTTP URLs with alternatives
+          - "http"
         fuzz:
-          - "https://{{redirect}}"
           - "//{{redirect}}"
           - "////{{redirect}}"
+          - "//%2F/{{redirect}}"
+          - "/%0D/{{redirect}}"
+          - "/%2F/{{redirect}}"
+          - "/%5C{{redirect}}"
+          - "/%00/{{redirect}}"
+          - "/%09/{{redirect}}"
+          - "https://{{redirect}}"
+          - "/%0a/{{redirect}}"
+          - "{{BaseURL}}.{{redirect}}"
+          - "{{BaseURL}}@{{redirect}}"
           - "{{redirect}}"
+          - "https:{{redirect}}"
+
 
     stop-at-first-match: true
     matchers-condition: and
@@ -171,8 +196,21 @@ http:
       - type: regex
         part: header
         regex:
+          - 'Location: //%2F/evil.com'
+          - 'Location: /%0D/evil.com'
+          - 'Location: /%2F/evil.com'
+          - 'Location: /%5Cevil.com'
           - 'Location: https://evil.com'
+          - 'Location: /%09/evil.com'
+          - 'Location: /%00/evil.com'
+          - 'Location: /%0a/evil.com'
+          - 'Location: \/evil.com'
+          - 'Location: {{BaseURL}}.{{redirect}}'
+          - 'Location: {{BaseURL}}@{{redirect}}'
+          - 'Location: //evil.com'
           - 'Location: evil.com'
+          - 'Location: https:evil.com'
+          - 'Location: ////evil.com'
 
       - type: status
         status:

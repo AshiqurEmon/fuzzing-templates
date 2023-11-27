@@ -169,25 +169,6 @@ http:
           - "{{redirect}}"
           - "https:{{redirect}}"
 
-      - part: query
-        mode: single
-        values:
-          - "http"
-        fuzz:
-          - "//{{redirect}}"
-          - "////{{redirect}}"
-          - "//%2F/{{redirect}}"
-          - "/%0D/{{redirect}}"
-          - "/%2F/{{redirect}}"
-          - "/%5C{{redirect}}"
-          - "/%00/{{redirect}}"
-          - "/%09/{{redirect}}"
-          - "https://{{redirect}}"
-          - "/%0a/{{redirect}}"
-          - "{{BaseURL}}.{{redirect}}"
-          - "{{BaseURL}}@{{redirect}}"
-          - "{{redirect}}"
-          - "https:{{redirect}}"
 
 
     stop-at-first-match: true

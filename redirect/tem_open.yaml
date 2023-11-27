@@ -20,7 +20,7 @@ http:
       - part: query
         mode: single
         values:
-          - "=http"
+          - "http"
         fuzz:
           - "//{{redirect}}"
           - "////{{redirect}}"

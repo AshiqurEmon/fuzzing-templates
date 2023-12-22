@@ -1,4 +1,4 @@
-id: open-redirect2
+id: open-redirect
 
 info:
   name: Open Redirect Detection
@@ -16,26 +16,156 @@ http:
         - "evil.com"
 
     fuzzing:
-
       - part: query
         mode: single
-        values:
-          - "http"
+        keys:
+          - AuthState
+          - URL
+          - _url
+          - callback
+          - checkout
+          - checkout_url
+          - content
+          - continue
+          - continueTo
+          - counturl
+          - data
+          - dest
+          - dest_url
+          - destination
+          - dir
+          - document
+          - domain
+          - done
+          - download
+          - feed
+          - file
+          - file_name
+          - file_url
+          - folder
+          - folder_url
+          - forward
+          - from_url
+          - go
+          - goto
+          - host
+          - html
+          - http
+          - https
+          - image
+          - image_src
+          - image_url
+          - imageurl
+          - img
+          - img_url
+          - include
+          - langTo
+          - load_file
+          - load_url
+          - login_to
+          - login_url
+          - logout
+          - media
+          - navigation
+          - next
+          - next_page
+          - open
+          - out
+          - page
+          - page_url
+          - pageurl
+          - path
+          - picture
+          - port
+          - proxy
+          - r
+          - r2
+          - redir
+          - redirect
+          - redirectUri
+          - redirectUrl
+          - redirect_to
+          - redirect_uri
+          - redirect_url
+          - reference
+          - referrer
+          - req
+          - request
+          - ret
+          - retUrl
+          - return
+          - returnTo
+          - return_path
+          - return_to
+          - return_url
+          - rt
+          - rurl
+          - show
+          - site
+          - source
+          - src
+          - target
+          - to
+          - u
+          - uri
+          - url
+          - val
+          - validate
+          - view
+          - window
+          - back
+          - cgi
+          - follow
+          - home
+          - jump
+          - link
+          - location
+          - menu
+          - move
+          - nav
+          - orig_url
+          - out_url
+          - query
+          - auth
+          - callback_url
+          - confirm_url
+          - destination_url
+          - domain_url
+          - entry
+          - exit
+          - cb_url
+          - forward_url
+          - go_to
+          - goto_url
+          - home_url
+          - image_link
+          - load
+          - logout_url
+          - nav_to
+          - origin
+          - page_link
+          - redirect_link
+          - ref
+          - referrer_url
+          - return_link
+          - return_to_url
+          - source_url
+          - target_url
+          - to_url
+          - validate_url
         fuzz:
           - "//{{redirect}}"
           - "////{{redirect}}"
-          - "//%2F/{{redirect}}"
-          - "/%0D/{{redirect}}"
-          - "/%2F/{{redirect}}"
           - "/%5C{{redirect}}"
-          - "/%00/{{redirect}}"
-          - "/%09/{{redirect}}"
+          - "//%2F/{{redirect}}"
           - "https://{{redirect}}"
+          - "http://{{redirect}}"
+          - "http:/{{redirect}}"
           - "/%0a/{{redirect}}"
-          - "{{BaseURL}}.{{redirect}}"
           - "{{BaseURL}}@{{redirect}}"
           - "{{redirect}}"
-          - "https:{{redirect}}"
+          
+
 
 
     stop-at-first-match: true
@@ -49,6 +179,8 @@ http:
           - 'Location: /%2F/evil.com'
           - 'Location: /%5Cevil.com'
           - 'Location: https://evil.com'
+          - 'Location: http://evil.com'
+          - 'Location: http:/evil.com'
           - 'Location: /%09/evil.com'
           - 'Location: /%00/evil.com'
           - 'Location: /%0a/evil.com'

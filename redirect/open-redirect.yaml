@@ -14,6 +14,7 @@ http:
     payloads:
       redirect:
         - "evil.com"
+        - "google.com"
 
     fuzzing:
 
@@ -59,6 +60,11 @@ http:
           - 'Location: https:evil.com'
           - 'Location: http:evil.com'
           - 'Location: ////evil.com'
+          - 'Location: google.com'
+          - 'Location: //google.com'
+          - 'Location: https://google.com'
+          - 'Location: http://google.com'
+          - 'Location: ////google.com'
 
       - type: status
         status:

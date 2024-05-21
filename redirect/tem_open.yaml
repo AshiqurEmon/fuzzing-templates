@@ -165,6 +165,7 @@ http:
           - "/%0a/{{redirect}}"
           - "{{BaseURL}}@{{redirect}}"
           - "{{redirect}}"
+          - "https://google.com/amp/s/evil.com/"
           
 
 
@@ -197,6 +198,7 @@ http:
           - 'Location: https://google.com'
           - 'Location: http://google.com'
           - 'Location: ////google.com'
+          - 'Location: https://google.com/amp/s/evil.com/'
 
       - type: status
         status:

@@ -33,7 +33,9 @@ http:
           - "/%0a/{{redirect}}"
           - "{{BaseURL}}.{{redirect}}"
           - "{{BaseURL}}@{{redirect}}"
-          - "{{redirect}}"
+          - "{{redirect}}" 
+          - "google.com/amp/s/evil.com/"
+          - "google.com/amp/s/evil.com"
 
 
     stop-at-first-match: true
@@ -65,6 +67,7 @@ http:
           - 'Location: https://google.com'
           - 'Location: http://google.com'
           - 'Location: ////google.com'
+          - 'Location: google.com/amp/s/evil.com'
 
       - type: status
         status:

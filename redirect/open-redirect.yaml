@@ -13,7 +13,6 @@ http:
 
     payloads:
       redirect:
-        - "googe.com"
         - "google.com"
 
     fuzzing:
@@ -34,9 +33,9 @@ http:
           - "{{BaseURL}}.{{redirect}}"
           - "{{BaseURL}}@{{redirect}}"
           - "{{redirect}}"
-          - "google.com/amp/s/googe.com/"
-          - "google.com/amp/s/googe.com"
-          - "https://google.com/amp/s/googe.com"
+          - "google.com/amp/s/google.com/"
+          - "google.com/amp/s/google.com"
+          - "https://google.com/amp/s/google.com"
 
 
     stop-at-first-match: true
@@ -45,31 +44,31 @@ http:
       - type: regex
         part: header
         regex:
-          - 'Location: //%2F/googe.com'
-          - 'Location: /%0D/googe.com'
-          - 'Location: /%2F/googe.com'
-          - 'Location: /%5Cgooge.com'
-          - 'Location: https://googe.com'
-          - 'Location: http://googe.com'
-          - 'Location: http:/googe.com'
-          - 'Location: /%09/googe.com'
-          - 'Location: /%00/googe.com'
-          - 'Location: /%0a/googe.com'
-          - 'Location: \/googe.com'
+          - 'Location: //%2F/google.com'
+          - 'Location: /%0D/google.com'
+          - 'Location: /%2F/google.com'
+          - 'Location: /%5Cgoogle.com'
+          - 'Location: https://google.com'
+          - 'Location: http://google.com'
+          - 'Location: http:/google.com'
+          - 'Location: /%09/google.com'
+          - 'Location: /%00/google.com'
+          - 'Location: /%0a/google.com'
+          - 'Location: \/google.com'
           - 'Location: {{BaseURL}}.{{redirect}}'
           - 'Location: {{BaseURL}}@{{redirect}}'
-          - 'Location: //googe.com'
-          - 'Location: googe.com'
-          - 'Location: https:googe.com'
-          - 'Location: http:googe.com'
-          - 'Location: ////googe.com'
+          - 'Location: //google.com'
+          - 'Location: google.com'
+          - 'Location: https:google.com'
+          - 'Location: http:google.com'
+          - 'Location: ////google.com'
           - 'Location: google.com'
           - 'Location: //google.com'
           - 'Location: https://google.com'
           - 'Location: http://google.com'
           - 'Location: ////google.com'
-          - 'Location: google.com/amp/s/googe.com'
-          - 'Location: https://google.com/amp/s/googe.com'
+          - 'Location: google.com/amp/s/google.com'
+          - 'Location: https://google.com/amp/s/google.com'
 
       - type: status
         status:

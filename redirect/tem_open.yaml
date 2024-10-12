@@ -26,6 +26,7 @@ http:
           - callback
           - checkout
           - checkout_url
+          - currentUrl
           - content
           - continue
           - continueTo
